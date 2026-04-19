@@ -11,6 +11,23 @@ pnpm dev
 
 Navigate to [localhost:3000](http://localhost:3000)
 
+## Environment Setup
+
+Production Fenine defaults are documented in `.env.production.example`.
+
+For local testing, this repo now includes a safe `.env.local` with Anvil-style defaults:
+
+```bash
+NEXT_PUBLIC_CHAIN_NAME=localhost
+NEXT_PUBLIC_PROVIDER=http://localhost:8545
+NEXT_PUBLIC_ETH_NODE=anvil
+NEXT_PUBLIC_NATIVE_TLD=eth
+NEXT_PUBLIC_ENS_SUBGRAPH_URL=http://localhost:42069/subgraph
+NEXT_PUBLIC_AVUP_ENDPOINT=http://localhost:8787
+```
+
+If you want to recreate or customise it, use `.env.local.example` as the template.
+
 # Why does this app exist?
 
 The purpose of the manager app is to expose the functionality of the ENS protocol in a user

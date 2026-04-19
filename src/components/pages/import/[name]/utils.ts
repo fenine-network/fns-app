@@ -1,5 +1,3 @@
-import { Address } from 'viem'
-
 import {
   BaseError,
   DnsDnssecVerificationFailedError,
@@ -7,7 +5,9 @@ import {
   DnsInvalidTxtRecordError,
   DnsNoTxtRecordError,
   DnsResponseStatusError,
-} from '@ensdomains/ensjs'
+} from '@fenine/ensjs'
+import { Address } from 'viem'
+
 import type { GetDnsImportDataReturnType } from '@ensdomains/ensjs/dns'
 
 import { addStateOverride } from '@app/hooks/chain/useEstimateGasWithStateOverride'

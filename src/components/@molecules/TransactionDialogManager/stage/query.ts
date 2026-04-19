@@ -252,17 +252,17 @@ export const createTransactionRequestQueryFn =
   async ({
     queryKey: [params, chainId, address],
   }: QueryFunctionContext<CreateTransactionRequestQueryKey>) => {
-    const client = config.getClient({ chainId })
+    const client = config.getClient({ chainId }) as ClientWithEns
 
     if (!connectorClient) throw new Error('connectorClient is required')
-    if (connectorClient.account.address !== address)
+    if (connectorClient.account!.address !== address)
       throw new Error('address does not match connector')
 
     try {
       return {
         data: await createTransactionRequestUnsafe({
           client,
-          connectorClient,
+          connectorClient: connectorClient as ConnectorClientWithEns,
           params,
           chainId,
           connections,

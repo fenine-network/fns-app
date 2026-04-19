@@ -170,7 +170,8 @@ export const useFusesSetDates = ({ name, enabled = true }: UseFusesSetDatesParam
   )
 
   const queries = useMemo(
-    () => generateGetBlockQueryArray(client, { address, blocksNeeded }),
+    () =>
+      client ? generateGetBlockQueryArray(client as ClientWithEns, { address, blocksNeeded }) : [],
     [client, address, blocksNeeded],
   )
 

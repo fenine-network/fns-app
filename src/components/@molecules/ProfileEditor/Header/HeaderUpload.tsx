@@ -39,6 +39,22 @@ type AvatarUploadResult =
       status: number
     }
 
+const DEFAULT_AVUP_ENDPOINT = 'https://avatar-upload.fenine.codes'
+
+const readUploadResponse = async (response: Response): Promise<AvatarUploadResult> => {
+  const contentType = response.headers.get('content-type') || ''
+
+  if (contentType.includes('application/json')) {
+    return (await response.json()) as AvatarUploadResult
+  }
+
+  const text = await response.text()
+  return {
+    error: text || `Upload failed with status ${response.status}`,
+    status: response.status,
+  }
+}
+
 const UploadComponent = ({
   dataURL,
   handleCancel,
@@ -63,7 +79,7 @@ const UploadComponent = ({
     error,
   } = useMutation<void, Error>({
     mutationFn: async () => {
-      const baseURL = process.env.NEXT_PUBLIC_AVUP_ENDPOINT || `https://euc.li`
+      const baseURL = process.env.NEXT_PUBLIC_AVUP_ENDPOINT || DEFAULT_AVUP_ENDPOINT
       let endpoint
 
       if (chainName !== 'mainnet') {
@@ -121,11 +137,7 @@ const UploadComponent = ({
 
         clearTimeout(timeoutId)
 
-        if (!response.ok) {
-          throw new Error(`Upload failed with status ${response.status}`)
-        }
-
-        const fetched = (await response.json()) as AvatarUploadResult
+        const fetched = await readUploadResponse(response)
 
         if ('message' in fetched && fetched.message === 'uploaded') {
           await invalidateMetaDataQuery(queryClient, {

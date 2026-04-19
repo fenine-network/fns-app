@@ -8,9 +8,10 @@ import { getSupportedChainById } from '@app/constants/chains'
 
 import { shouldOpenModal } from './utils'
 
-const appLinks = {
+const appLinks: Record<string, string> = {
   Ethereum: 'app.ens.domains',
   Sepolia: 'sepolia.app.ens.domains',
+  Fenine: 'app.fenames.xyz',
   Localhost: '',
 }
 
@@ -37,7 +38,7 @@ export const NetworkNotifications = () => {
       variant="desktop"
       onClose={() => setOpen(false)}
     >
-      <Button size="small" as="a" href={`https://${appLinks[accountChainName]}`}>
+      <Button size="small" as="a" href={`https://${appLinks[accountChainName] || ''}`}>
         {t(`networkNotifications.${accountChainName}.action`)}
       </Button>
     </Toast>

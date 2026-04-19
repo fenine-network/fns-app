@@ -54,6 +54,7 @@ export const AnnouncementBanner = () => {
     <Link href="https://ens.domains/ensv2" legacyBehavior passHref>
       <Container>
         <TextContainer>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/migrate/confetti.png" alt="" height={33} width={33} />
           <Text>
             <Typography fontVariant="largeBold">{t('banner.title')}</Typography>

@@ -231,6 +231,7 @@ const SelectPrimaryName = ({ data: { address }, dispatch, onDismiss }: Props) =>
       }
 
       // Attempt to decrypt name
+      if (!client) throw new Error('no_client')
       validName = (await getDecodedName(client, {
         name: validName,
         allowIncomplete: true,

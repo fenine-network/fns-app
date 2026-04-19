@@ -66,7 +66,8 @@ export const addEnsContractsWithSubgraphAndOverrides = <const TChain extends Cha
     contracts: {
       ...chainWithEns.contracts,
       ...(isSupportedChain(chain.id) ? addresses[chain.id] : addresses['1']),
-      ensBulkRenewal: chainWithEns.contracts.wrappedBulkRenewal,
+      ensBulkRenewal:
+        chainWithEns.contracts.wrappedBulkRenewal || chainWithEns.contracts.ensBulkRenewal!,
     },
-  } as const satisfies ChainWithEnsAndContracts<TChain, AdditionalContracts>
+  } as unknown as ChainWithEnsAndContracts<TChain, AdditionalContracts>
 }

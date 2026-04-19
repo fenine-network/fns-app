@@ -1,5 +1,5 @@
 {
-  "title": "Register {{name}} on ENS",
+  "title": "Register {{name}} on Fenine",
   "subtitle": "Register",
   "heading": "Register {{name}}",
   "invoice": {
@@ -183,12 +183,12 @@
       ],
       "setupProfile": "I'd like to set up my profile first",
       "paymentMethod": "Payment method",
-      "notEnoughEth": "Not enough ETH in wallet",
+      "notEnoughEth": "Not enough FEN in wallet",
       "creditOrDebit": "Credit or debit card",
       "additionalFee": "Additional processing fee",
       "pendingMoonpayTransaction": "Your MoonPay transaction is processing. This may take up to two minutes. You can check your progress from the confirmation email you recieved.",
-      "failedMoonpayTransaction": "Your MoonPay transaction has failed. Please try again or choose the 'Ethereum' payment method.",
-      "ethereum": "Ethereum",
+      "failedMoonpayTransaction": "Your MoonPay transaction has failed. Please try again or choose the 'FEN' payment method.",
+      "ethereum": "FEN",
       "processing": "Processing",
       "poweredBy": "Powered by",
       "moonpayModalHeader": "MoonPay Checkout",

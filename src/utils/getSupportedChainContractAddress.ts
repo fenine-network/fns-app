@@ -1,20 +1,21 @@
-import { getChainContractAddress } from 'viem'
+import { getChainContractAddress, type Address } from 'viem'
 
 import { ClientWithEns } from '@app/types'
 
-export const getSupportedChainContractAddress = <
-  TContract extends Extract<keyof ClientWithEns['chain']['contracts'], string>,
->({
+export const getSupportedChainContractAddress = ({
   client,
   contract,
   blockNumber,
 }: {
-  client: ClientWithEns
-  contract: TContract
+  client?: Pick<ClientWithEns, 'chain'> | null
+  contract: string
   blockNumber?: bigint
-}) =>
-  getChainContractAddress({
+}) => {
+  if (!client) return '0x0000000000000000000000000000000000000000' as Address
+
+  return getChainContractAddress({
     chain: client.chain,
     contract,
     blockNumber,
-  })
+  }) as Address
+}

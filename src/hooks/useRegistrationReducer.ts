@@ -14,7 +14,7 @@ import { useLocalStorageReducer } from '@app/hooks/useLocalStorage'
 import { useReferrer } from '@app/hooks/useReferrer'
 import { sendEvent } from '@app/utils/analytics/events'
 import { getReferrerHex } from '@app/utils/referrer'
-import { ONE_YEAR, yearsToSeconds } from '@app/utils/utils'
+import { nativeChainId, ONE_YEAR, yearsToSeconds } from '@app/utils/utils'
 
 const REGISTRATION_REDUCER_DATA_ITEM_VERSION = 4
 
@@ -32,7 +32,7 @@ const defaultData: RegistrationReducerDataItem = {
   name: '',
   isMoonpayFlow: false,
   externalTransactionId: '',
-  chainId: 1,
+  chainId: nativeChainId,
   durationType: 'years',
   version: REGISTRATION_REDUCER_DATA_ITEM_VERSION,
   referrer: EMPTY_BYTES32,
@@ -59,7 +59,7 @@ const makeDefaultData = (selected: SelectedItemProperties): RegistrationReducerD
   reverseRecord: false,
   records: [],
   resolverAddress: EMPTY_ADDRESS,
-  secret: randomSecret({ platformDomain: 'enslabs.eth', campaign: 3 }),
+  secret: randomSecret({ platformDomain: 'fenine.fen', campaign: 3 }),
   started: false,
   isMoonpayFlow: false,
   externalTransactionId: '',

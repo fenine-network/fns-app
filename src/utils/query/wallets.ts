@@ -1,4 +1,4 @@
-import { connectorsForWallets, type WalletList } from '@getpara/rainbowkit'
+import { connectorsForWallets, type WalletList } from '@rainbow-me/rainbowkit'
 import {
   argentWallet,
   braveWallet,
@@ -6,11 +6,10 @@ import {
   injectedWallet,
   ledgerWallet,
   metaMaskWallet,
-  phantomWallet,
   rainbowWallet,
   safeWallet,
   walletConnectWallet,
-} from '@getpara/rainbowkit/wallets'
+} from '@rainbow-me/rainbowkit/wallets'
 
 import { WC_PROJECT_ID } from '../constants'
 import { isInsideSafe } from '../safe'
@@ -22,12 +21,6 @@ export const rainbowKitWallets = isInsideSafe()
       injectedWallet,
       safeWallet,
       braveWallet,
-      () => ({
-        ...phantomWallet(),
-        iconUrl: async () => (await import('../../assets/PhantomWallet')).default,
-        iconBackground: '#9A8AEE',
-        downloadUrls: {},
-      }),
       // always shown
       walletConnectWallet,
       rainbowWallet,

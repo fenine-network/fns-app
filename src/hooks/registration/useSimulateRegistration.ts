@@ -50,9 +50,14 @@ export const useSimulateRegistration = ({
   return useSimulateContract({
     ...makeSimulateRegistrationParams({
       registrationParams,
-      ensEthRegistrarControllerAddress: client.chain.contracts.ensEthRegistrarController.address,
+      ensEthRegistrarControllerAddress:
+        client?.chain.contracts.ensEthRegistrarController.address ||
+        '0x0000000000000000000000000000000000000000',
     }),
     value: calculateValueWithBuffer(value),
-    query,
+    query: {
+      ...query,
+      enabled: (query?.enabled ?? true) && !!client,
+    },
   })
 }

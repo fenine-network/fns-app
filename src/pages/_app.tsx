@@ -30,7 +30,7 @@ import { RainbowKitWithParaProvider } from '@app/utils/query/RainbowKitWithParaP
 import { SyncDroppedTransaction } from '@app/utils/SyncProvider/SyncDroppedTransaction'
 import { SyncProvider } from '@app/utils/SyncProvider/SyncProvider'
 
-import '@getpara/rainbowkit/styles.css'
+import '@rainbow-me/rainbowkit/styles.css'
 
 import i18n from '../i18n'
 

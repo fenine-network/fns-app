@@ -1,3 +1,4 @@
+import type { Address } from 'viem'
 import { useClient } from 'wagmi'
 
 import { ClientWithEns } from '@app/types'
@@ -11,7 +12,7 @@ export const useContractAddress = <
 }: {
   contract: TContractName
   blockNumber?: bigint
-}) => {
+}): Address => {
   const client = useClient()
 
   return getSupportedChainContractAddress({

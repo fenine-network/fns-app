@@ -113,10 +113,11 @@ export const SyncProvider = ({ children }: { children: React.ReactNode }) => {
   const hasSubgraphSyncErrors = useHasSubgraphSyncErrors()
   const { data: currentGraphBlock } = useQuery<number>({
     queryKey: ['graphBlock', chainId, transactions],
-    queryFn: () =>
-      subgraphClient.request<GraphResponse>(query).then((res) => {
-        return res!._meta.block.number
-      }),
+    queryFn: async () => {
+      if (!subgraphClient) return 0
+      const res = await subgraphClient.request<GraphResponse>(query)
+      return res!._meta.block.number
+    },
     initialData: 0,
     refetchInterval: (q) => {
       if (hasSubgraphSyncErrors.error) return false

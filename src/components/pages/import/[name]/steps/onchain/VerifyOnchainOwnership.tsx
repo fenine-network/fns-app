@@ -1,4 +1,4 @@
-import { useConnectModal } from '@getpara/rainbowkit'
+import { useConnectModal } from '@rainbow-me/rainbowkit'
 import { Dispatch, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'

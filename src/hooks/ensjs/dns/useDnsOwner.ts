@@ -1,5 +1,3 @@
-import { QueryFunctionContext } from '@tanstack/react-query'
-
 import {
   DnsDnssecVerificationFailedError,
   DnsInvalidAddressChecksumError,
@@ -7,7 +5,9 @@ import {
   DnsNoTxtRecordError,
   DnsResponseStatusError,
   UnsupportedNameTypeError,
-} from '@ensdomains/ensjs'
+} from '@fenine/ensjs'
+import { QueryFunctionContext } from '@tanstack/react-query'
+
 import { getDnsOwner, GetDnsOwnerParameters, GetDnsOwnerReturnType } from '@ensdomains/ensjs/dns'
 
 import { useQueryOptions } from '@app/hooks/useQueryOptions'

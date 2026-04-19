@@ -2,7 +2,6 @@ import type { TFunction } from 'react-i18next'
 import { toBytes, type Address } from 'viem'
 import { Connection } from 'wagmi'
 
-import type { Eth2ldName } from '@ensdomains/ensjs/dist/types'
 import type { GetPriceReturnType } from '@ensdomains/ensjs/public'
 import type { DecodedFuses } from '@ensdomains/ensjs/utils'
 
@@ -14,6 +13,12 @@ import { calculateDatesDiff } from './date'
 import { ONE_YEAR } from './time'
 
 export * from './time'
+
+export const nativeChainName = 'fenine'
+export const nativeTld = process.env.NEXT_PUBLIC_NATIVE_TLD || 'fen'
+export const nativeNameSuffix = `.${nativeTld}`
+export const nativeChainId = 920
+export const nativeBlockExplorerUrl = 'https://explorer.fene.app'
 
 export const shortenAddress = (address = '', maxLength = 10, leftSlice = 5, rightSlice = 5) => {
   if (address.length < maxLength) {
@@ -90,7 +95,9 @@ export const formatDurationOfDates = ({
 }
 
 export const makeEtherscanLink = (data: string, network?: string, route: string = 'tx') =>
-  `https://${!network || network === 'mainnet' ? '' : `${network}.`}etherscan.io/${route}/${data}`
+  !network || network === 'mainnet' || network === nativeChainName
+    ? `${nativeBlockExplorerUrl}/${route}/${data}`
+    : `https://${network}.etherscan.io/${route}/${data}`
 
 export const isBrowser = !!(
   typeof window !== 'undefined' &&
@@ -101,13 +108,13 @@ export const isBrowser = !!(
 export const checkDNSName = (name: string): boolean => {
   const labels = name?.split('.')
 
-  return !!labels && labels[labels.length - 1] !== 'eth'
+  return !!labels && labels[labels.length - 1] !== nativeTld
 }
 
-export const checkETH2LDFromName = (name: string): name is Eth2ldName => {
+export const checkETH2LDFromName = (name: string): boolean => {
   const labels = name.split('.')
   if (labels.length !== 2) return false
-  if (labels[1] !== 'eth') return false
+  if (labels[1] !== nativeTld) return false
   return true
 }
 
@@ -115,7 +122,7 @@ export const checkDNS2LDFromName = (name?: string) => {
   const labels = name?.split('.')
   if (!labels) return false
   if (labels.length !== 2) return false
-  if (labels[1] === 'eth') return false
+  if (labels[1] === nativeTld) return false
   return true
 }
 
@@ -240,7 +247,7 @@ export const connectorIsMetaMask = (
   return connections?.some(
     (connection) =>
       connection?.connector?.id === 'io.metamask' &&
-      connection.accounts.some((a) => a === connectorClient.account.address),
+      connection.accounts.some((a) => a === connectorClient.account!.address),
   )
 }
 
@@ -251,6 +258,6 @@ export const connectorIsPhantom = (
   return connections?.some(
     (connection) =>
       connection?.connector?.id === 'app.phantom' &&
-      connection.accounts.some((a) => a === connectorClient.account.address),
+      connection.accounts.some((a) => a === connectorClient.account!.address),
   )
 }

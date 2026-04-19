@@ -158,9 +158,10 @@ const estimateIndividualGas = async <TName extends TransactionName>({
   connectorClient,
   client,
 }: { name: TName; stateOverride?: UserStateOverrides } & TransactionParameters<TName>) => {
+  const account = connectorClient.account!
   const generatedRequest = await createTransactionRequest({
     client,
-    connectorClient,
+    connectorClient: connectorClient as ConnectorClientWithEns,
     data,
     name,
   })
@@ -178,24 +179,22 @@ const estimateIndividualGas = async <TName extends TransactionName>({
   // It does a simple transfer, and accesses any storage slot that would be accessed by any other transfer.
   const accessList = await createAccessList(client, {
     from: emptyAddress,
-    data: concatHex(['0x5f808080600173', connectorClient.account.address, '0x5af100']),
+    data: concatHex(['0x5f808080600173', account.address, '0x5af100']),
     value: '0x1',
-  })
+  }).catch(() => undefined)
 
   const formattedRequest = formatTransactionRequest({
     ...generatedRequest,
-    from: connectorClient.account.address,
-    accessList: accessList.accessList,
+    from: account.address,
+    accessList: accessList?.accessList,
   })
 
-  const stateOverrideWithBalance = stateOverride?.find(
-    (s) => s.address === connectorClient.account.address,
-  )
+  const stateOverrideWithBalance = stateOverride?.find((s) => s.address === account.address)
     ? stateOverride
     : [
         ...(stateOverride || []),
         {
-          address: connectorClient.account.address,
+          address: account.address,
           balance:
             ('value' in generatedRequest && generatedRequest.value ? generatedRequest.value : 0n) +
             parseEther('10'),

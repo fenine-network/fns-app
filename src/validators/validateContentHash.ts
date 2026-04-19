@@ -1,4 +1,5 @@
-import { BaseError } from '@ensdomains/ensjs'
+import { BaseError } from '@fenine/ensjs'
+
 import { encodeContentHash, getProtocolType } from '@ensdomains/ensjs/utils'
 
 import { ContentHashProvider } from '@app/utils/contenthash'
@@ -38,6 +39,7 @@ export const validateContentHash =
       return true
     } catch (e: unknown) {
       if (e instanceof BaseError) return e.message
+      if (e instanceof Error) return e.message
       return 'Invalid content hash'
     }
   }

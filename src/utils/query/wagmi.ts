@@ -1,5 +1,3 @@
-import { inAppWalletConnector } from '@thirdweb-dev/wagmi-adapter'
-import { createThirdwebClient, defineChain as thirdwebDefineChain } from 'thirdweb'
 import {
   createClient,
   formatTransactionRequest,
@@ -11,60 +9,21 @@ import {
   type Transport,
 } from 'viem'
 import { createConfig, createStorage, fallback, http, webSocket } from 'wagmi'
-import { localhost, mainnet, sepolia } from 'wagmi/chains'
+import { localhost } from 'wagmi/chains'
 
 import { ccipRequest } from '@ensdomains/ensjs/utils'
 
-import { getChainsFromUrl, SupportedChain } from '@app/constants/chains'
+import { fenineWithEns, getChainsFromUrl, SupportedChain } from '@app/constants/chains'
 
 import { isInsideSafe } from '../safe'
 import { rainbowKitConnectors } from './wallets'
 
 const isLocalProvider = !!process.env.NEXT_PUBLIC_PROVIDER
 
-const thirdwebClientId =
-  process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || '4e8c81182c3709ee441e30d776223354'
-const unicornFactoryAddress =
-  process.env.NEXT_PUBLIC_NEXT_PUBLIC_UNICORN_FACTORY_ADDRESS ||
-  '0xD771615c873ba5a2149D5312448cE01D677Ee48A'
+const fenineWsUrl = process.env.NEXT_PUBLIC_RPC_WS_URL || 'wss://rpc.fene.app/ws'
 
-// Create Thirdweb Client
-const client = createThirdwebClient({
-  clientId: thirdwebClientId,
-})
-
-// Create the Unicorn Wallet Connector (using Thirdweb In-App Wallet)
-// Note: The chain specified here is for the smart account functionality as per Unicorn docs.
-const unicornConnector = inAppWalletConnector({
-  client,
-  smartAccount: {
-    sponsorGas: true, // or false based on your needs / Unicorn requirements
-    chain: thirdwebDefineChain(mainnet.id),
-    factoryAddress: unicornFactoryAddress,
-  },
-})
-
-const tenderlyKey = process.env.NEXT_PUBLIC_TENDERLY_KEY || '4imxc4hQfRjxrVB2kWKvTo'
-const drpcKey = process.env.NEXT_PUBLIC_DRPC_KEY || 'AnmpasF2C0JBqeAEzxVO8aRuvzLTrWcR75hmDonbV6cR'
-
-const tenderlyUrl = (chainName: string) => `https://${chainName}.gateway.tenderly.co/${tenderlyKey}`
-export const drpcUrl = (chainName: string) =>
-  `https://lb.drpc.org/ogrpc?network=${
-    chainName === 'mainnet' ? 'ethereum' : chainName
-  }&dkey=${drpcKey}`
-
-export const drpcWsUrl = (chainName: string) =>
-  `wss://lb.drpc.org/ogws?network=${
-    chainName === 'mainnet' ? 'ethereum' : chainName
-  }&dkey=${drpcKey}`
-
-const initialiseTransports = (chainName: string) => {
-  return fallback([
-    webSocket(drpcWsUrl(chainName)), // Primary: instant block updates via subscription
-    http(drpcUrl(chainName)), // Fallback 1: DRPC HTTP
-    http(tenderlyUrl(chainName)), // Fallback 2: Tenderly HTTP
-  ])
-}
+const initialiseFenineTransport = () =>
+  fallback([webSocket(fenineWsUrl), http(fenineWithEns.rpcUrls.default.http[0])])
 
 export const prefix = 'wagmi'
 
@@ -109,8 +68,7 @@ export const transports = {
         // this is a hack to make the types happy, dont remove pls
         [localhost.id]: HttpTransport
       })),
-  [mainnet.id]: initialiseTransports('mainnet'),
-  [sepolia.id]: initialiseTransports('sepolia'),
+  [fenineWithEns.id]: initialiseFenineTransport(),
 } as const
 
 // This is a workaround to fix MetaMask defaulting to the wrong transaction type
@@ -159,11 +117,9 @@ const chains = getChainsFromUrl().map((c) => ({
   },
 })) as unknown as readonly [SupportedChain, ...SupportedChain[]]
 
-const combinedConnectors = [unicornConnector, ...rainbowKitConnectors]
-
 const wagmiConfig_ = createConfig({
   syncConnectedChain: false,
-  connectors: combinedConnectors,
+  connectors: rainbowKitConnectors,
   ssr: true,
   multiInjectedProviderDiscovery: !isInsideSafe(),
   storage: createStorage({ storage: localStorageWithInvertMiddleware(), key: prefix }),
@@ -179,7 +135,7 @@ const wagmiConfig_ = createConfig({
           wait: 50,
         },
       },
-      transport: (params) => transports[chainId]({ ...params }),
+      transport: (params) => transports[chainId as keyof typeof transports]({ ...params }),
       ccipRead: {
         request: ccipRequest(chain),
       },

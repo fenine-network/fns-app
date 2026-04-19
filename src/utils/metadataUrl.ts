@@ -5,7 +5,8 @@
  * Extracted to break dependency cycle between useEnsAvatar and metadataCache.
  */
 
-export const META_DATA_BASE_URL = 'https://metadata.ens.domains'
+export const META_DATA_BASE_URL =
+  process.env.NEXT_PUBLIC_METADATA_BASE_URL || 'https://metadata.fenine.codes'
 
 /**
  * Creates a metadata service URL for ENS names

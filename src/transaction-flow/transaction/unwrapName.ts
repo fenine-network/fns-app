@@ -25,11 +25,11 @@ const displayItems = (
 ]
 
 const transaction = async ({ connectorClient, data }: TransactionFunctionParameters<Data>) => {
-  const { address } = connectorClient.account
+  const { address } = connectorClient.account!
 
   if (checkETH2LDFromName(data.name))
     return unwrapName.makeFunctionData(connectorClient, {
-      name: data.name,
+      name: data.name as any,
       newOwnerAddress: address,
       newRegistrantAddress: address,
     })

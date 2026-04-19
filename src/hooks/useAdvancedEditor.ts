@@ -11,7 +11,7 @@ import { textOptions } from '@app/components/@molecules/AdvancedEditor/textOptio
 import addressOptions from '@app/components/@molecules/ProfileEditor/options/addressOptions'
 import useExpandableRecordsGroup from '@app/hooks/useExpandableRecordsGroup'
 import { useResolverHasInterfaces } from '@app/hooks/useResolverHasInterfaces'
-import { Profile } from '@app/types'
+import { ClientWithEns, Profile } from '@app/types'
 import { getUsedAbiEncodeAs } from '@app/utils/abi'
 import { normalizeCoinAddress } from '@app/utils/coin'
 import {
@@ -298,7 +298,7 @@ const useAdvancedEditor = ({ name, profile, isLoading, overwrites, callback }: P
         return encodeAbi({ encodeAs: 'json', data: JSON.parse(data!) })
       })
       .with([P.union(1, 2, 4, 8), P.union(P.nullish, '')], async () => {
-        const encodedAs = await getUsedAbiEncodeAs(client, { name })
+        const encodedAs = client ? await getUsedAbiEncodeAs(client as ClientWithEns, { name }) : []
         return Promise.all(encodedAs.map((encodeAs) => encodeAbi({ encodeAs, data: null })))
       })
       .otherwise(() => undefined)

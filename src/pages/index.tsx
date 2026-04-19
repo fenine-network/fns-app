@@ -93,7 +93,7 @@ export default function Page() {
   return (
     <>
       <Head>
-        <title>ENS</title>
+        <title>Fenine</title>
       </Head>
       <StyledLeadingHeading>
         <LogoAndLanguage>

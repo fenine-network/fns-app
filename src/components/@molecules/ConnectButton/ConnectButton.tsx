@@ -1,4 +1,4 @@
-import { useConnectModal } from '@getpara/rainbowkit'
+import { useConnectModal } from '@rainbow-me/rainbowkit'
 import { useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import type { Address } from 'viem'

@@ -18,19 +18,9 @@ type GetContentHashLinkParameters = {
   decodedContentHash: DecodedContentHash
 }
 
-export const getContentHashLink = ({
-  name,
-  chainId,
-  decodedContentHash,
-}: GetContentHashLinkParameters) => {
+export const getContentHashLink = ({ decodedContentHash }: GetContentHashLinkParameters) => {
   const protocol = decodedContentHash.protocolType
   const hash = decodedContentHash.decoded
-
-  const useEthLink =
-    name.endsWith('.eth') && chainId === 1 && (protocol === 'ipfs' || protocol === 'ipns')
-  if (useEthLink) {
-    return `https://${name}.limo`
-  }
 
   if (protocol === 'ipfs') {
     return `https://${hash}.ipfs.cf-ipfs.com` // using ipfs's secured origin gateway

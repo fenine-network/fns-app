@@ -1,4 +1,4 @@
-import type { DecodedText } from '@ensdomains/ensjs/dist/types'
+import type { DecodedText } from '@ensdomains/ensjs/types'
 
 import {
   supportedGeneralRecordKeys,

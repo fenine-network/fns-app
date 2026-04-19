@@ -3,6 +3,8 @@ import { useClient, useReadContract } from 'wagmi'
 
 import { getChainContractAddress, registryResolverSnippet } from '@ensdomains/ensjs/contracts'
 
+import { ClientWithEns } from '@app/types'
+
 type UseRegistryResolverParameters = {
   name: string
 
@@ -13,11 +15,14 @@ export const useRegistryResolver = ({ name, enabled = true }: UseRegistryResolve
   const client = useClient()
   return useReadContract({
     abi: registryResolverSnippet,
-    address: getChainContractAddress({ client, contract: 'ensRegistry' }),
+    address: getChainContractAddress({
+      client: client as ClientWithEns,
+      contract: 'ensRegistry',
+    }),
     functionName: 'resolver',
     args: [namehash(name)],
     query: {
-      enabled: enabled && !!name,
+      enabled: enabled && !!name && !!client,
     },
   })
 }

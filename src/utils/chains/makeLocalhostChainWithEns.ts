@@ -75,5 +75,9 @@ export const makeLocalhostChainWithEns = <T extends Chain>(
         url: 'http://localhost:42069/subgraph',
       },
     },
+    ens: {
+      nativeTld: 'eth',
+      minRegistrationLength: 3,
+    },
   }
 }

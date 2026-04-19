@@ -41,7 +41,7 @@ import { CreateQueryKey, GenericQueryKey } from '@app/types'
 import { sendEvent } from '@app/utils/analytics/events'
 import { useBreakpoint } from '@app/utils/BreakpointProvider'
 import { getRegistrationStatus } from '@app/utils/registrationStatus'
-import { thread, yearsToSeconds } from '@app/utils/utils'
+import { nativeNameSuffix, thread, yearsToSeconds } from '@app/utils/utils'
 
 import { FakeSearchInputBox, SearchInputBox } from './SearchInputBox'
 import { SearchResult } from './SearchResult'
@@ -419,7 +419,7 @@ const formatEthText = ({ name, isETH }: { name: string; isETH: boolean | undefin
   if (isETH) return name
   if (name.includes('.')) return ''
   if (name === '[root]') return ''
-  return `${name}.eth`
+  return `${name}${nativeNameSuffix}`
 }
 const addEthDropdownItem =
   ({ name, isETH }: { name: string; isETH: boolean | undefined }) =>

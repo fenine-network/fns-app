@@ -3,6 +3,8 @@ import { ParsedInputResult, parseInput } from '@ensdomains/ensjs/utils'
 import { Prettify } from '@app/types'
 import { tryBeautify } from '@app/utils/beautify'
 
+const nativeTld = process.env.NEXT_PUBLIC_NATIVE_TLD || 'fen'
+
 export type ValidationResult = Prettify<
   Partial<Omit<ParsedInputResult, 'normalised' | 'labelDataArray'>> & {
     name: string
@@ -23,7 +25,9 @@ const tryDecodeURIComponent = (input: string) => {
 
 export const validate = (input: string) => {
   const decodedInput = tryDecodeURIComponent(input)
-  const { normalised: name, ...parsedInput } = parseInput(decodedInput)
+  const { normalised: name, ...parsedInput } = parseInput(decodedInput, {
+    nativeTld,
+  })
   const isNonASCII = parsedInput.labelDataArray.some((dataItem) => dataItem.type !== 'ASCII')
   const outputName = name || input
 

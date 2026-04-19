@@ -72,7 +72,7 @@ const EditResolverForm = ({
         <LatestResolverTitle>{t('input.editResolver.latestLabel')}</LatestResolverTitle>
         <Outlink
           data-testid="latest-resolver-etherscan"
-          href={makeEtherscanLink(lastestResolverAddress, chainName, 'address')}
+          href={makeEtherscanLink(lastestResolverAddress || '', chainName, 'address')}
         >
           {t('input.editResolver.etherscan')}
         </Outlink>

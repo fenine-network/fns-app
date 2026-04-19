@@ -33,7 +33,7 @@ import {
   TransactionFlowAction,
   TransactionStage,
 } from '@app/transaction-flow/types'
-import { ConfigWithEns } from '@app/types'
+import { ClientWithEns, ConfigWithEns, ConnectorClientWithEns } from '@app/types'
 import { sendEvent } from '@app/utils/analytics/events'
 import { getReadableError } from '@app/utils/errors'
 import { getIsCachedData } from '@app/utils/getIsCachedData'
@@ -449,8 +449,8 @@ export const TransactionStageModal = ({
   } = useSendTransaction({
     mutation: {
       onSuccess: transactionSuccessHandler({
-        client,
-        connectorClient: connectorClient!,
+        client: client as ClientWithEns,
+        connectorClient: connectorClient as ConnectorClientWithEns,
         actionName,
         txKey,
         request,

@@ -30,7 +30,7 @@ const displayItems = (
 const transaction = async ({ connectorClient, data }: TransactionFunctionParameters<Data>) => {
   return wrapName.makeFunctionData(connectorClient, {
     name: data.name,
-    newOwnerAddress: connectorClient.account.address,
+    newOwnerAddress: connectorClient.account!.address,
   })
 }
 

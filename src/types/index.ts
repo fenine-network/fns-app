@@ -164,9 +164,11 @@ export type Prettify<T> = {
   [K in keyof T]: T[K]
 } & {}
 
-export type ConnectorClientWithEns = Client<Transport, SupportedChain, Account>
+export type ConnectorClientWithEns = Client<Transport, SupportedChain, Account> & {
+  account: Account
+}
 export type ConfigWithEns = typeof wagmiConfig
-export type ClientWithEns = ReturnType<ConfigWithEns['getClient']>
+export type ClientWithEns = NonNullable<ReturnType<ConfigWithEns['getClient']>>
 
 export type QueryConfig<TData, TError, TSelectData = TData> = Pick<
   UseQueryOptions<TData, TError, TSelectData>,

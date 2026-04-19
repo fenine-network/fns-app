@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "{{name}} on ENS",
-    "description": "{{name}}'s profile on the Ethereum Name Service"
+    "title": "{{name}} on Fenine",
+    "description": "{{name}}'s profile on the Fenine Name Service"
   },
   "title": "Profile",
   "yourWallet": "Your wallet",

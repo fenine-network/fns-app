@@ -222,9 +222,12 @@ export const SyncDroppedTransaction = ({ children }: { children: React.ReactNode
   const store = useTransactionStore()
 
   useInterval(
-    () => findDroppedTransactions(client, { address, store, transactions }),
+    () => {
+      if (!client) return
+      return findDroppedTransactions(client, { address, store, transactions })
+    },
     TRANSACTION_SEARCH_INTERVAL,
-    [address, client.chain.id, store, transactions.length],
+    [address, client?.chain.id, store, transactions.length],
   )
 
   return <div>{children}</div>

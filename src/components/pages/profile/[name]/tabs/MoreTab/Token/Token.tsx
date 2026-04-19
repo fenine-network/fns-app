@@ -124,7 +124,10 @@ const Token = ({ name, isWrapped }: Props) => {
       <HeaderContainer>
         <Typography fontVariant="headingFour">{t('tabs.more.token.label')}</Typography>
         {hasToken && blockExplorer && (
-          <Outlink data-testid="etherscan-nft-link" href={buildNftUrl(contractAddress, tokenId)!}>
+          <Outlink
+            data-testid="etherscan-nft-link"
+            href={buildNftUrl(contractAddress || '', tokenId)!}
+          >
             {blockExplorer.name}
           </Outlink>
         )}

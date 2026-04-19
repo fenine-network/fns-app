@@ -1,6 +1,5 @@
+import { addEnsContracts } from '@fenine/ensjs'
 import type { Chain } from 'viem'
-
-import { addEnsContracts } from '@ensdomains/ensjs'
 
 export const addEnsContractsWithSubgraph = <const TChain extends Chain>({
   chain,

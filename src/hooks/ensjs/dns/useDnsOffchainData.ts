@@ -1,12 +1,12 @@
-import { QueryFunctionContext } from '@tanstack/react-query'
-
 import {
   DnsDnssecVerificationFailedError,
   DnsInvalidTxtRecordError,
   DnsNoTxtRecordError,
   DnsResponseStatusError,
   UnsupportedNameTypeError,
-} from '@ensdomains/ensjs'
+} from '@fenine/ensjs'
+import { QueryFunctionContext } from '@tanstack/react-query'
+
 import {
   getDnsOffchainData,
   GetDnsOffchainDataParameters,

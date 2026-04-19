@@ -22,17 +22,10 @@ const babelIncludeRegexes = [
  * @type {import('next').NextConfig}
  * */
 const nextConfig = {
-  transpilePackages: [
-    '@getpara/rainbowkit',
-    '@getpara/rainbowkit-wallet',
-    '@getpara/core-components',
-    '@getpara/react-components',
-    '@getpara/react-sdk',
-    '@getpara/core-sdk',
-    '@getpara/web-sdk',
-    '@getpara/wagmi-v2-integration',
-    '@getpara/viem-v2-integration',
-  ],
+  experimental: {
+    externalDir: true,
+  },
+  transpilePackages: ['@rainbow-me/rainbowkit'],
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
@@ -40,7 +33,7 @@ const nextConfig = {
   // change to true once infinite loop is fixed
   swcMinify: true,
   images: {
-    domains: ['metadata.ens.domains'],
+    domains: ['metadata.ens.domains', 'metadata.fenine.codes'],
   },
   async headers() {
     // keep this in case we need to debug Safe in the future
@@ -194,6 +187,8 @@ const nextConfig = {
       config.resolve.alias['../styles.css'] = path.resolve(__dirname, 'src/stub.css')
     }
 
+    config.resolve.alias['@ensdomains/ensjs'] = '@fenine/ensjs'
+
     if (!options.isServer && !options.dev) {
       const originalEntry = config.entry
       /**
@@ -230,7 +225,7 @@ const nextConfig = {
   },
   eslint: {
     // next lint will ignore presets if not stated
-    dirs: ['src', 'src/components', 'src/pages', 'src/layouts', 'playwright', 'e2e'],
+    dirs: ['src', 'src/components', 'src/pages', 'src/layouts'],
   },
   ...(process.env.NEXT_PUBLIC_IPFS
     ? {

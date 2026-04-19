@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 
 import { getLargestMedianGasFee } from './query'
 
-vi.mock('@getpara/rainbowkit', () => ({
+vi.mock('@rainbow-me/rainbowkit', () => ({
   useConnectModal: () => ({
     openConnectModal: vi.fn(),
   }),
