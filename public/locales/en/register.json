@@ -153,8 +153,8 @@
           "decline": "Back"
         },
         "clearEth": {
-          "title": "Clear ETH address?",
-          "description": "Without an ETH address set people will not be able to send money to this name. This can be updated later.",
+          "title": "Clear FEN address?",
+          "description": "Without a FEN address set people will not be able to send funds to this name. This can be updated later.",
           "confirm": "Clear",
           "decline": "Cancel"
         }

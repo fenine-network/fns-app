@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { ReactNode, useCallback, useEffect, useRef } from 'react'
 import useTransition, { TransitionState } from 'react-transition-state'
-import styled, { css, useTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useAccount } from 'wagmi'
 
 import { useRecentTransactions } from '@app/hooks/transactions/useRecentTransactions'
@@ -9,8 +9,6 @@ import { useInitial } from '@app/hooks/useInitial'
 import { legacyFavouritesRoute, routes } from '@app/routes'
 import { useBreakpoint } from '@app/utils/BreakpointProvider'
 
-import ENSFull from '../assets/ENSFull.svg'
-import ENSWithGradient from '../assets/ENSWithGradient.svg'
 import BaseLink from './@atoms/BaseLink'
 import { RouteItem } from './@atoms/RouteItem/RouteItem'
 import { HeaderConnect } from './@molecules/ConnectButton/ConnectButton'
@@ -33,14 +31,23 @@ const LogoAnchor = styled.a(
     cursor: pointer;
     transition: all 0.15s ease-in-out;
 
-    & > svg {
+    & > img {
       vertical-align: bottom;
+      display: block;
     }
 
     &:hover {
       filter: brightness(1.05);
       transform: translateY(-1px);
     }
+  `,
+)
+
+const LogoImage = styled.img(
+  ({ theme }) => css`
+    height: ${theme.space['12']};
+    width: auto;
+    display: block;
   `,
 )
 
@@ -127,7 +134,6 @@ const routesNoSearch = routes.filter(
 )
 
 export const Header = () => {
-  const { space } = useTheme()
   const router = useRouter()
   const isInitial = useInitial()
   const { isConnected } = useAccount()
@@ -202,11 +208,7 @@ export const Header = () => {
             </BaseLink>
           )}
         >
-          {pathnameWithoutQuery === '/' ? (
-            <ENSFull height={space['12']} />
-          ) : (
-            <ENSWithGradient height={space['12']} />
-          )}
+          <LogoImage src="/favicon.svg" alt="Fenine" />
         </ConditionalWrapper>
         {pathnameWithoutQuery !== '/' && breakpoints.sm && (
           <>

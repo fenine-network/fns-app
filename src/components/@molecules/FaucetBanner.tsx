@@ -48,7 +48,7 @@ const LargeCheckIcon = styled.svg(
 
 const getAmountFromHex = (hex: `0x${string}`) => formatEther(BigInt(hex))
 const msToDays = (ms: number) => Math.floor(ms / 1000 / 60 / 60 / 24)
-const chainEthTicker = (chainName: string) => `${chainName.slice(0, 2)}ETH`
+const chainFenTicker = (chainName: string) => `${chainName.slice(0, 2).toUpperCase()}FEN`
 
 const FaucetBanner = () => {
   const chainName = useChainName()
@@ -82,12 +82,12 @@ const FaucetBanner = () => {
         icon={EthSVG}
         onClick={openDialog}
         alert="info"
-        title={`You have unclaimed ${chainName} ETH!`}
+        title={`You have unclaimed ${chainName} FEN!`}
       >
         {t('testnetFaucet.explanation', {
           amount,
           testnet: chainName,
-          ticker: chainEthTicker(chainName),
+          ticker: chainFenTicker(chainName),
         })}
       </StyledBanner>
     </BannerWrapper>
@@ -106,7 +106,7 @@ const FaucetBanner = () => {
               displayItems={[
                 {
                   label: 'Value',
-                  value: `${amount} ${chainEthTicker(chainName)}`,
+                  value: `${amount} ${chainFenTicker(chainName)}`,
                   useRawLabel: true,
                 },
                 { label: 'Address', value: address || '', type: 'address', useRawLabel: true },

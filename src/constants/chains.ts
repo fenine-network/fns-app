@@ -1,4 +1,4 @@
-import deployments from '@contracts/deployments/fenine/deployments.json'
+import deployments from '@fenine/ens-contracts/deployments/fenine/deployments.json'
 import { addEnsContracts } from '@fenine/ensjs'
 import type { ChainWithEns } from '@fenine/ensjs/contracts'
 import { defineChain, type Address } from 'viem'

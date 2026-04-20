@@ -35,7 +35,7 @@ const StyledCard = styled.form(({ theme }) => [
     margin: 0 auto;
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
-    border-radius: ${theme.radii['2xLarge']};
+    border-radius: 0;
     background-color: ${theme.colors.background};
     overflow: hidden;
     padding: ${theme.space['4']};

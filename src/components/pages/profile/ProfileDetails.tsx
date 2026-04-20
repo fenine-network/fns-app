@@ -27,7 +27,7 @@ import {
 const ProfileInfoBox = styled(CacheableComponent)(
   ({ theme }) => css`
     background-color: ${theme.colors.background};
-    border-radius: ${theme.radii['2xLarge']};
+    border-radius: 0;
     border: ${theme.space.px} solid ${theme.colors.border};
   `,
 )

@@ -22,7 +22,7 @@ const Container = styled.div(
     width: 100%;
     padding: 0;
     background-color: ${theme.colors.background};
-    border-radius: ${theme.radii['2xLarge']};
+    border-radius: 0;
     border: ${theme.space.px} solid ${theme.colors.border};
     display: flex;
     flex-direction: column;
@@ -124,9 +124,9 @@ const FirstItems = styled.div(
 )
 
 const DetailButtonWrapper = styled.div(
-  ({ theme }) => css`
+  () => css`
     & > button {
-      border-radius: ${theme.radii.large};
+      border-radius: 0;
     }
   `,
 )

@@ -3,8 +3,9 @@ import { Trans, useTranslation } from 'react-i18next'
 import styled, { css } from 'styled-components'
 import { Address } from 'viem'
 
-import { CurrencyToggle, Helper, Typography } from '@ensdomains/thorin'
+import { Helper, Typography } from '@ensdomains/thorin'
 
+import { CurrencySwitch } from '@app/components/@atoms/CurrencySwitch'
 import { CurrencyText } from '@app/components/@atoms/CurrencyText/CurrencyText'
 import GasDisplay from '@app/components/@atoms/GasDisplay'
 import { AvatarWithZorb } from '@app/components/AvatarWithZorb'
@@ -253,10 +254,10 @@ export const ImportTransaction = ({
       <InvoiceContainer>
         <OptionBar>
           <GasDisplay gasPrice={gasPrice} />
-          <CurrencyToggle
+          <CurrencySwitch
             size="small"
             checked={userConfig.currency === 'fiat'}
-            onChange={(e) => setCurrency(e.target.checked ? 'fiat' : 'eth')}
+            onChange={(checked) => setCurrency(checked ? 'fiat' : 'eth')}
           />
         </OptionBar>
         <InvoiceItemBox>

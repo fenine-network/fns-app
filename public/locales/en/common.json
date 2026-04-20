@@ -1,9 +1,9 @@
 {
-  "title": "Your web3 username",
-  "description": "Your identity across web3, one name for all your crypto addresses, and your decentralised website.",
+  "title": "Your Fenine identity",
+  "description": "One name for your wallets, your profile, and your decentralised presence across the Fenine ecosystem.",
   "loading": "Loading",
   "notFound": "404 Not Found",
-  "etherscan": "Etherscan",
+  "etherscan": "Fenscan",
   "action": {
     "cancel": "Cancel",
     "change": "Change",
@@ -84,11 +84,11 @@
     "terms": "Terms of Use",
     "privacy": "Privacy Policy",
     "back": "Back",
-    "oldApp": "Old ENS App",
+    "oldApp": "Old FNS App",
     "language": "Language",
     "theme": "Theme",
     "currency": "Currency",
-    "ipfsApp": "IPFS ENS App",
+    "ipfsApp": "IPFS FNS App",
     "feedback": "Feedback",
     "syncMessage": "Syncing with the network. Changes from your transaction may not be visible yet.",
     "mode": {
@@ -192,7 +192,7 @@
     },
     "networkLatency": {
       "title": "Slow data syncing",
-      "message": "The ENS app is experiencing slow downs due to network latency issues."
+      "message": "The FNS app is experiencing slow downs due to network latency issues."
     }
   },
   "transaction": {
@@ -205,13 +205,13 @@
       "migrateProfile": "Migrate profile",
       "migrateProfileWithReset": "Migrate profile",
       "migrateProfileWithSync": "Migrate and update profile",
-      "migrateProfileWithEthAddress": "Migrate and update ETH address",
+      "migrateProfileWithEthAddress": "Migrate and update FEN address",
       "wrapName": "Wrap name",
       "updateResolver": "Update resolver",
       "updateProfile": "Update profile",
       "setPrimaryName": "Set primary name",
       "resetPrimaryName": "Remove primary name",
-      "updateEthAddress": "Update ETH address",
+      "updateEthAddress": "Update FEN address",
       "testSendName": "Send name",
       "burnFuses": "Burn permissions",
       "createSubname": "Create subname",
@@ -244,13 +244,13 @@
       "migrateProfile": "Set existing records on new resolver",
       "migrateProfileWithReset": "Set existing records on new resolver",
       "migrateProfileWithSync": "Set existing records on new resolver",
-      "migrateProfileWithEthAddress": "Set existing records and eth address on new resolver",
+      "migrateProfileWithEthAddress": "Set existing records and FEN address on new resolver",
       "wrapName": "Wrap the name",
       "updateResolver": "Change resolver to",
       "updateProfile": "Update records on existing resolver",
       "setPrimaryName": "Set the primary name for your address",
-      "updateEthAddress": "Update ETH address to this address",
-      "updateEthAddressOnLatestResolver": "Update ETH address on latest resolver",
+      "updateEthAddress": "Update FEN address to this address",
+      "updateEthAddressOnLatestResolver": "Update FEN address on latest resolver",
       "testSendName": "Set the controller and registrant of the name",
       "createSubname": "Create a new subname on the name",
       "burnFuses": "Burn the chosen permissions until name expiry",
@@ -348,7 +348,7 @@
     "error": {
       "unknown": "An unknown error occurred"
     },
-    "viewEtherscan": "View on Etherscan",
+    "viewEtherscan": "View on Fenscan",
     "viewOnBlockExplorer": "View on {{blockExplorer}}",
     "viewMore": "View More"
   },
@@ -384,7 +384,7 @@
     "empty": "No options found"
   },
   "testnetFaucet": {
-    "explanation": "Each address on {{ testnet }} can claim {{ amount }} {{ ticker }} to test out the ENS manager app, as well as any other testnet usage.",
+    "explanation": "Each address on {{ testnet }} can claim {{ amount }} {{ ticker }} to test out the FNS manager app, as well as any other testnet usage.",
     "note": "It may take a few minutes to show up in your wallet."
   },
   "roles": {
@@ -409,7 +409,7 @@
       "description": "An address that can change the profile."
     },
     "eth-record": {
-      "title": "ETH record",
+      "title": "FEN record",
       "description": "The address that this name points to."
     }
   },
@@ -434,8 +434,8 @@
   },
   "networkNotifications": {
     "Ethereum": {
-      "title": "Switch to Ethereum?",
-      "description": "You've selected Ethereum (mainnet) in your wallet.",
+      "title": "Switch to Fenine?",
+      "description": "You've selected Fenine (mainnet) in your wallet.",
       "action": "Go to app.ens.domains"
     },
     "Sepolia": {

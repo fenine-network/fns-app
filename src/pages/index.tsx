@@ -8,16 +8,16 @@ import FaucetBanner from '@app/components/@molecules/FaucetBanner'
 import Hamburger from '@app/components/@molecules/Hamburger/Hamburger'
 import { SearchInput } from '@app/components/@molecules/SearchInput/SearchInput'
 import { LeadingHeading } from '@app/components/LeadingHeading'
-import { AnnouncementBanner } from '@app/components/pages/AnnouncementBanner'
 
-import ENSFull from '../assets/ENSFull.svg'
+const brandTitleGradient =
+  'linear-gradient(120deg, rgb(255, 71, 71) 0%, rgb(255, 103, 103) 48%, rgb(255, 156, 122) 100%)'
 
 const GradientTitle = styled.h1(
   ({ theme }) => css`
     font-size: ${theme.fontSizes.headingTwo};
     text-align: center;
     font-weight: 800;
-    background-image: ${theme.colors.blueGradient};
+    background-image: ${brandTitleGradient};
     background-repeat: no-repeat;
     background-size: 110%;
     /* stylelint-disable-next-line property-no-vendor-prefix */
@@ -62,9 +62,11 @@ const Stack = styled.div(
   `,
 )
 
-const StyledENS = styled.div(
+const StyledLogo = styled.img(
   ({ theme }) => css`
     height: ${theme.space['8.5']};
+    width: auto;
+    display: block;
   `,
 )
 
@@ -97,7 +99,7 @@ export default function Page() {
       </Head>
       <StyledLeadingHeading>
         <LogoAndLanguage>
-          <StyledENS as={ENSFull} />
+          <StyledLogo src="/favicon.svg" alt="Fenine" />
         </LogoAndLanguage>
         <Hamburger />
       </StyledLeadingHeading>
@@ -111,8 +113,6 @@ export default function Page() {
             </Typography>
           </SubtitleWrapper>
           <SearchInput />
-
-          <AnnouncementBanner />
         </Stack>
       </Container>
     </>

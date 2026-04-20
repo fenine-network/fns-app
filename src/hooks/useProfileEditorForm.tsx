@@ -70,7 +70,7 @@ export const useProfileEditorForm = (existingRecords: ProfileRecord[]) => {
       return t(`steps.profile.options.groups.social.items.${record.key}`)
     if (record.group === 'address')
       return t('steps.profile.options.groups.address.itemLabel', {
-        coin: record.key,
+        coin: record.key.toLowerCase() === 'eth' ? 'FEN' : record.key,
       })
     if (record.group === 'other') return t(`steps.profile.options.groups.other.items.${record.key}`)
     if (record.group === 'website')
@@ -81,7 +81,10 @@ export const useProfileEditorForm = (existingRecords: ProfileRecord[]) => {
   const secondaryLabelForRecord = (record: ProfileRecord) => {
     if (record.group === 'website') return 'contenthash'
     if (record.key === 'contentHash') return 'contenthash'
-    if (record.group !== 'custom') return record.key
+    if (record.group !== 'custom') {
+      if (record.key.toLowerCase() === 'eth') return 'fen'
+      return record.key
+    }
     return ''
   }
 

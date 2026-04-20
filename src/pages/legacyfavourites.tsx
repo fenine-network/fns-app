@@ -13,9 +13,8 @@ import { Content } from '@app/layouts/Content'
 import { ContentGrid } from '@app/layouts/ContentGrid'
 
 const Container = styled.div(
-  ({ theme }) => css`
-    border-radius: 20px;
-    border-radius: ${theme.radii['2xLarge']};
+  () => css`
+    border-radius: 0;
     overflow: hidden;
   `,
 )
@@ -52,7 +51,7 @@ export default function Page() {
               <Typography>
                 Your favourites have been carried over from{' '}
                 <Outlink href="https://legacy.ens.domains" target="_blank" rel="noreferrer">
-                  Legacy ENS
+                  Legacy FNS
                 </Outlink>
                 . These will be uneditable until favourites are fully implemented.
               </Typography>

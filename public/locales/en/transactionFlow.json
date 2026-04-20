@@ -148,7 +148,7 @@
         },
         "resetProfile": {
           "title": "Reset profile",
-          "subtitle": "You are resetting your profile records. You will lose all existing profile information, such as ETH address, avatar and social records. These can be re-added by editing your profile."
+          "subtitle": "You are resetting your profile records. You will lose all existing profile information, such as FEN address, avatar and social records. These can be re-added by editing your profile."
         },
         "resolverNotNameWrapperAware": {
           "title": "Resolver incompatible",
@@ -204,7 +204,7 @@
     "editResolver": {
       "title": "Edit Resolver",
       "latestLabel": "Use latest resolver",
-      "etherscan": "Etherscan",
+      "etherscan": "Fenscan",
       "latestMessage": "You are on the latest resolver",
       "customLabel": "Custom resolver",
       "customPlaceholder": "Enter custom resolver address"
@@ -240,7 +240,7 @@
         "total": "Estimated total"
       },
       "bannerMsg": "Extending for multiple years will save money on network costs by avoiding yearly transactions.",
-      "gasLimitError": "Not enough ETH in wallet"
+      "gasLimitError": "Not enough FEN in wallet"
     },
     "transferProfile": {
       "title": "Transfer Profile",
@@ -321,7 +321,7 @@
         "lastWarning": {
           "title": "Are you absolutely sure?",
           "subtitle": "You are making changes that can only undone when the name expires ({{date}}).",
-          "message": "Please type your ENS name ({{name}}) to confirm."
+          "message": "Please type your FNS name ({{name}}) to confirm."
         }
       },
       "action": {
@@ -349,7 +349,7 @@
     },
     "resetPrimaryName": {
       "title": "Remove Primary Name",
-      "description": "This name will no longer appear as the name for this address. However, transactions to this name will still resolve to this address unless you remove the ETH record."
+      "description": "This name will no longer appear as the name for this address. However, transactions to this name will still resolve to this address unless you remove the FEN record."
     },
     "sendName": {
       "views": {
@@ -358,13 +358,13 @@
           "description": "You do not have permission to send this name."
         },
         "search": {
-          "placeholder": "ENS name or Ethereum address",
+          "placeholder": "FNS name or Fenine address",
           "views": {
             "error": {
               "message": "Something went wrong. Please try again."
             },
             "intro": {
-              "message": "Search for an ENS name or ETH address"
+              "message": "Search for an FNS name or FEN address"
             },
             "noResults": {
               "message": "No results found"
@@ -388,7 +388,7 @@
               "title": "Summary of changes",
               "updates": {
                 "role": "Update {{role}} role to {{address}}",
-                "eth-record": "Update ETH record to {{address}}"
+                "eth-record": "Update FEN record to {{address}}"
               },
               "remove": {
                 "profile": "Remove profile records"
@@ -442,16 +442,16 @@
     },
     "selectPrimaryName": {
       "updateEthAddress": {
-        "title": "Update ETH address",
-        "description": "The ETH address for this name doesn't match this wallet. To use this as your primary name you will need to update the ETH address first."
+        "title": "Update FEN address",
+        "description": "The FEN address for this name doesn't match this wallet. To use this as your primary name you will need to update the FEN address first."
       },
       "noResolver": {
         "title": "No resolver set",
-        "description": "To use this as your primary name you will need to set a resolver and update the ETH address first."
+        "description": "To use this as your primary name you will need to set a resolver and update the FEN address first."
       },
       "invalidResolver": {
         "title": "Unauthorized resolver set",
-        "description": "To use this as your primary name you will need to set a valid resolver and update the ETH address first."
+        "description": "To use this as your primary name you will need to set a valid resolver and update the FEN address first."
       }
     },
     "multiStepSubnameDelete": {

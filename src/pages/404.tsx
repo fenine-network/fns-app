@@ -6,11 +6,11 @@ import ErrorScreen from '@app/components/@atoms/ErrorScreen'
 import Hamburger from '@app/components/@molecules/Hamburger/Hamburger'
 import { LeadingHeading } from '@app/components/LeadingHeading'
 
-import ENSFull from '../assets/ENSFull.svg'
-
-const StyledENS = styled.div(
+const StyledLogo = styled.img(
   ({ theme }) => css`
     height: ${theme.space['8.5']};
+    width: auto;
+    display: block;
   `,
 )
 
@@ -42,7 +42,7 @@ export default function Page() {
       </Head>
       <StyledLeadingHeading>
         <LogoAndLanguage>
-          <StyledENS as={ENSFull} />
+          <StyledLogo src="/favicon.svg" alt="Fenine" />
         </LogoAndLanguage>
         <Hamburger />
       </StyledLeadingHeading>

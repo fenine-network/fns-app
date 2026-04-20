@@ -21,7 +21,7 @@ export const IS_DEV_ENVIRONMENT =
   process.env.NODE_ENV === 'development' ||
   process.env.NEXT_PUBLIC_PROVIDER
 
-export const INVALID_NAME = '[Invalid ENS Name]'
+export const INVALID_NAME = '[Invalid FNS Name]'
 
 export const ENS_LINKS = {
   X: 'https://x.com/ensdomains',

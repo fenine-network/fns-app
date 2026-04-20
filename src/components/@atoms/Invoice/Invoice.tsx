@@ -14,7 +14,7 @@ const Container = styled.div(
     flex-direction: column;
     gap: ${theme.space['2']};
     width: 100%;
-    border-radius: ${theme.space['2']};
+    border-radius: 0;
   `,
 )
 

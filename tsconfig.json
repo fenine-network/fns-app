@@ -41,7 +41,6 @@
       "@app/*": ["./src/*"],
       "@public/*": ["./public/*"],
       "@root/*": ["./*"],
-      "@contracts/*": ["../ens-contracts/*"],
       "@fenine/fns-avatar": ["./node_modules/@fenine/fns-avatar/dist/index.d.ts"],
       "@fenine/fns-avatar/*": ["./node_modules/@fenine/fns-avatar/dist/*"],
       "@fenine/ensjs": ["./node_modules/@fenine/ensjs/dist/index.d.ts"],
@@ -71,7 +70,7 @@
     "typings-custom/**/*.d.ts",
     "typings-custom/generated/*.d.ts",
     "typings-custom/local-contracts.d.ts",
-    "./node_modules/@ensdomains/ens-contracts/artifacts",
+    "./node_modules/@fenine/ens-contracts/artifacts",
     "./deploy/.utils/*.ts"
   ],
   "exclude": [

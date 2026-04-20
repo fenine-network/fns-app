@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components'
 import { match } from 'ts-pattern'
 
 import {
-  CurrencyToggle,
   LanguageSVG,
   MoonSVG,
   RightChevronSVG,
@@ -25,6 +24,7 @@ import SocialMirrorColour from '@app/assets/social/SocialMirrorColour.svg'
 import SocialX from '@app/assets/social/SocialX.svg'
 import SocialYoutube from '@app/assets/social/SocialYoutube.svg'
 import BaseLink from '@app/components/@atoms/BaseLink'
+import { CurrencySwitch } from '@app/components/@atoms/CurrencySwitch'
 import { SocialIcon } from '@app/components/SocialIcon'
 import { useChainName } from '@app/hooks/chain/useChainName'
 import { useGasPrice } from '@app/hooks/chain/useGasPrice'
@@ -307,11 +307,10 @@ const MainMenu = ({ setCurrentView }: { setCurrentView: (view: HamburgerView) =>
             <Typography weight="bold">{t('navigation.currency')}</Typography>
           </div>
           <div>
-            <CurrencyToggle
+            <CurrencySwitch
               size="extraSmall"
-              fiat={userConfig.fiat}
               checked={userConfig.currency === 'fiat'}
-              onChange={(e) => setCurrency(e.target.checked ? 'fiat' : 'eth')}
+              onChange={(checked) => setCurrency(checked ? 'fiat' : 'eth')}
             />
           </div>
         </SettingsItem>

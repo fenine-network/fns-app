@@ -20,7 +20,7 @@ const Container = styled.div(
     width: 100%;
     padding: ${theme.space['4']};
     border: 1px solid ${theme.colors.border};
-    border-radius: ${theme.radii.full};
+    border-radius: 0;
     display: flex;
     align-items: center;
     gap: ${theme.space['4']};
@@ -60,7 +60,7 @@ const LabelContainer = styled.div(
     position: relative;
     flex: 1;
     height: ${theme.space['11']};
-    border-radius: ${theme.radii.full};
+    border-radius: 0;
     background-color: transparent;
     transition: background-color 150ms ease-in-out;
     overflow: hidden;

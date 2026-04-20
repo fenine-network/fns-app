@@ -37,7 +37,7 @@
         "setAsPrimaryName": {
           "label": "Set as primary name",
           "title": "Set your primary name",
-          "description": "To set your primary name to this name, the ETH address must match this address."
+          "description": "To set your primary name to this name, the FEN address must match this address."
         },
         "deleteSubname": {
           "label": "Delete subname"
@@ -101,7 +101,7 @@
         },
         "contract": {
           "title": "Contract address",
-          "tooltip": "The address of the contract that enables Wrapped ENS names.",
+          "tooltip": "The address of the contract that enables wrapped FNS names.",
           "warning": "Some apps may show the contract address as the owner. This doesn't affect your ownership."
         }
       },
@@ -115,8 +115,8 @@
         "subname-manager": "An address or contract responsible for subname renewals.",
         "eth-record": "The address that will receive funds sent to this name on mainnet.",
         "grace-period": "A 90 day grace window after expiration, when the name can still be extended but not re-registered.",
-        "contract-address": "The address of the contract that enables Wrapped ENS names.",
-        "namewrapper": "The contract that enables Wrapped ENS names."
+        "contract-address": "The address of the contract that enables wrapped FNS names.",
+        "namewrapper": "The contract that enables wrapped FNS names."
       }
     },
     "subnames": {
@@ -277,7 +277,7 @@
         "outdated": "Outdated",
         "wildcard": "Wildcard",
         "version": "Version",
-        "etherscan": "Etherscan"
+        "etherscan": "Fenscan"
       },
       "fuses": {
         "label": "Fuses",
@@ -321,7 +321,7 @@
         "wrapName": "Wrap Name",
         "unwrap": "Unwrap Name",
         "unwrapWarning": "This name has revoked the permissions needed for this action.",
-        "tooltip": "The Name Wrapper enables additional functionality on ENS names.",
+        "tooltip": "The Name Wrapper enables additional functionality on FNS names.",
         "status": {
           "unwrapped": "Unwrapped",
           "wrapped": "Wrapped"
@@ -368,7 +368,7 @@
       "makeOwnerDescription": "The owner can send to a new owner and change the manager",
       "makeManager": "Make manager",
       "makeManagerDescription": "The manager can change and set records.",
-      "inputPlaceholder": "Enter an Ethereum address or ENS name",
+      "inputPlaceholder": "Enter a Fenine address or FNS name",
       "transferSubname": "Transfer Name",
       "transferController": "Transfer Controller"
     },
@@ -380,7 +380,7 @@
       "startLabel": "Upgrade",
       "resumeLabel": "Resume Upgrade",
       "boxTitle": "Unlock new features",
-      "boxDescription": "Upgrading your name unlocks the latest functionality of ENS"
+      "boxDescription": "Upgrading your name unlocks the latest functionality of FNS"
     },
     "descriptions": {
       "owner": "Owns and controls the name",

@@ -3,6 +3,21 @@ import styled, { css } from 'styled-components'
 
 import { Helper } from '@ensdomains/thorin'
 
+const StyledHelper = styled(Helper)(
+  ({ theme }) => css`
+    border-radius: 0;
+    background: rgba(255, 244, 244, 0.96);
+    border: 1px solid rgba(255, 71, 71, 0.24);
+    color: ${theme.colors.text};
+
+    html[data-theme='dark'] & {
+      background: rgba(56, 18, 18, 0.92);
+      border-color: rgba(255, 108, 108, 0.32);
+      color: ${theme.colors.textPrimary};
+    }
+  `,
+)
+
 const InnerContainer = styled.div(
   ({ theme }) => css`
     position: relative;
@@ -28,13 +43,21 @@ const Bar = styled.div<{ $highlightPercent: number }>(
     --bar-width: calc(${$highlightPercent}% - ${theme.space['1']});
     background: linear-gradient(
       90deg,
-      ${theme.colors.blue} var(--bar-width),
-      ${theme.colors.red} var(--bar-width)
+      rgb(255, 116, 116) var(--bar-width),
+      rgb(255, 71, 71) var(--bar-width)
     );
     width: 100%;
     height: ${theme.space['4']};
-    border-radius: ${theme.radii.medium};
+    border-radius: 0;
     margin-bottom: ${theme.space['11']};
+
+    html[data-theme='dark'] & {
+      background: linear-gradient(
+        90deg,
+        rgb(255, 138, 138) var(--bar-width),
+        rgb(255, 108, 108) var(--bar-width)
+      );
+    }
   `,
 )
 
@@ -56,11 +79,21 @@ const Marker = styled.div<{ $percent: number }>(
     height: ${theme.space['10']};
     padding: 0 ${theme.space['2']};
 
-    border-radius: ${theme.radii.medium};
-    background-color: ${theme.colors.background};
+    border-radius: 0;
+    background-color: rgba(255, 250, 245, 0.98);
     &:last-of-type {
-      background-color: ${theme.colors.blue};
-      color: ${theme.colors.background};
+      background-color: rgb(255, 108, 108);
+      color: rgb(255, 255, 255);
+    }
+
+    html[data-theme='dark'] & {
+      background-color: rgba(24, 24, 18, 0.98);
+      color: ${theme.colors.textPrimary};
+    }
+
+    html[data-theme='dark'] &:last-of-type {
+      background-color: rgb(255, 108, 108);
+      color: rgb(255, 255, 255);
     }
 
     font-size: ${theme.fontSizes.extraSmall};
@@ -90,10 +123,13 @@ const Marker = styled.div<{ $percent: number }>(
       height: ${theme.space['7']};
       width: ${theme.space['1']};
 
-      outline: ${theme.space['0.5']} solid ${theme.colors.blueSurface};
-
-      border-radius: ${theme.radii.medium};
+      outline: ${theme.space['0.5']} solid rgba(255, 196, 196, 0.75);
+      border-radius: 0;
       background-color: inherit;
+
+      html[data-theme='dark'] & {
+        outline-color: rgba(255, 108, 108, 0.35);
+      }
     }
   `,
 )
@@ -133,7 +169,7 @@ export const RegistrationTimeComparisonBanner = ({ message, yearlyFee, transacti
   const twentyRounded = calcPercent(twenty.gas, 3)
 
   return (
-    <Helper alert="info">
+    <StyledHelper alert="info">
       <InnerContainer>
         <div>{message}</div>
         <Bar $highlightPercent={twentyRounded} />
@@ -150,6 +186,6 @@ export const RegistrationTimeComparisonBanner = ({ message, yearlyFee, transacti
           {t('unit.gas', { value: `${twenty.gas}%` })}
         </Marker>
       </InnerContainer>
-    </Helper>
+    </StyledHelper>
   )
 }

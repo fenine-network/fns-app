@@ -4,6 +4,7 @@ import '@splidejs/react-splide/css'
 
 import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import { Space_Grotesk } from 'next/font/google'
 import { ReactElement, ReactNode } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import { IntercomProvider } from 'react-use-intercom'
@@ -38,6 +39,12 @@ import '../styles.css'
 
 const INTERCOM_ID = process.env.NEXT_PUBLIC_INTERCOM_ID || 're9q5yti'
 
+const uiFont = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '700'],
+})
+
 const anim = keyframes`
   0% {
     opacity: 1;
@@ -54,6 +61,42 @@ const anim = keyframes`
 `
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --font-ui: ${uiFont.style.fontFamily};
+    --thrn-radii-card: 0px;
+    --thrn-radii-input: 0px;
+    --thrn-radii-large: 0px;
+    --thrn-radii-almostExtraLarge: 0px;
+    --thrn-radii-extraLarge: 0px;
+    --thrn-radii-2xLarge: 0px;
+    --thrn-radii-2_5xLarge: 0px;
+    --thrn-radii-3xLarge: 0px;
+    --thrn-radii-4xLarge: 0px;
+    --thrn-color-accent: rgb(255, 71, 71);
+    --thrn-color-accentPrimary: rgb(255, 71, 71);
+    --thrn-color-accentBright: rgb(255, 108, 108);
+    --thrn-color-accentDim: rgb(214, 52, 52);
+    --thrn-color-accentLight: rgb(255, 232, 232);
+    --thrn-color-accentSurface: rgb(255, 244, 244);
+    --thrn-color-accentPrimaryText: rgb(255, 255, 255);
+    --thrn-color-accentPrimaryBackground: rgb(255, 71, 71);
+    --thrn-color-accentPrimaryBorder: transparent;
+    --thrn-color-accentPrimaryHover: rgb(232, 58, 58);
+    --thrn-color-accentSecondaryText: rgb(255, 71, 71);
+    --thrn-color-accentSecondaryBackground: rgb(255, 232, 232);
+    --thrn-color-accentSecondaryBorder: transparent;
+    --thrn-color-accentSecondaryHover: rgb(255, 214, 214);
+    --thrn-color-blueGradient: linear-gradient(120deg, rgb(255, 71, 71) 0%, rgb(255, 103, 103) 48%, rgb(255, 156, 122) 100%);
+    --thrn-color-bluePrimaryText: rgb(255, 255, 255);
+    --thrn-color-bluePrimaryBackground: rgb(255, 71, 71);
+    --thrn-color-bluePrimaryBorder: transparent;
+    --thrn-color-bluePrimaryHover: rgb(232, 58, 58);
+    --thrn-color-blueSecondaryText: rgb(255, 71, 71);
+    --thrn-color-blueSecondaryBackground: rgb(255, 232, 232);
+    --thrn-color-blueSecondaryBorder: transparent;
+    --thrn-color-blueSecondaryHover: rgb(255, 214, 214);
+  }
+
   html,
   body {
     padding: 0;
@@ -63,22 +106,14 @@ const GlobalStyle = createGlobalStyle`
   *,
   ::before,
   ::after {
-    font-family: Satoshi,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Fira Sans",
-      "Droid Sans",
-      "Helvetica Neue",
+    font-family: var(--font-ui),
+      'Noto Color Emoji',
+      'Apple Color Emoji',
       sans-serif;
   }
 
   body {
-    background: radial-gradient(50% 50% at 50% 50%, rgba(82, 152, 255, 0.062) 0%, rgba(255, 255, 255, 0) 100%), #F7F7F7;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 71, 71, 0.08) 0%, rgba(255, 255, 255, 0) 100%), #F7F7F7;
     color: var(--thrn-color-textPrimary);
   }
 
@@ -93,6 +128,35 @@ const GlobalStyle = createGlobalStyle`
 
   [data-theme="dark"] body {
     background: rgb(20, 20, 22);
+  }
+
+  [data-theme="dark"] {
+    --thrn-radii-card: 0px;
+    --thrn-radii-input: 0px;
+    --thrn-radii-large: 0px;
+    --thrn-radii-almostExtraLarge: 0px;
+    --thrn-radii-extraLarge: 0px;
+    --thrn-radii-2xLarge: 0px;
+    --thrn-radii-2_5xLarge: 0px;
+    --thrn-radii-3xLarge: 0px;
+    --thrn-radii-4xLarge: 0px;
+    --thrn-color-accent: rgb(255, 108, 108);
+    --thrn-color-accentPrimary: rgb(255, 108, 108);
+    --thrn-color-accentBright: rgb(255, 138, 138);
+    --thrn-color-accentDim: rgb(222, 73, 73);
+    --thrn-color-accentLight: rgb(71, 24, 24);
+    --thrn-color-accentSurface: rgb(51, 18, 18);
+    --thrn-color-accentPrimaryBackground: rgb(255, 108, 108);
+    --thrn-color-accentPrimaryHover: rgb(255, 126, 126);
+    --thrn-color-accentSecondaryText: rgb(255, 130, 130);
+    --thrn-color-accentSecondaryBackground: rgb(67, 22, 22);
+    --thrn-color-accentSecondaryHover: rgb(92, 28, 28);
+    --thrn-color-blueGradient: linear-gradient(120deg, rgb(255, 108, 108) 0%, rgb(255, 137, 137) 48%, rgb(255, 179, 148) 100%);
+    --thrn-color-bluePrimaryBackground: rgb(255, 108, 108);
+    --thrn-color-bluePrimaryHover: rgb(255, 126, 126);
+    --thrn-color-blueSecondaryText: rgb(255, 130, 130);
+    --thrn-color-blueSecondaryBackground: rgb(67, 22, 22);
+    --thrn-color-blueSecondaryHover: rgb(92, 28, 28);
   }
 
   a {

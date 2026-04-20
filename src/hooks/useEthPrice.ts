@@ -1,4 +1,4 @@
-import deployments from '@contracts/deployments/fenine/deployments.json'
+import deployments from '@fenine/ens-contracts/deployments/fenine/deployments.json'
 import { Address } from 'viem'
 import { useChainId, useReadContract } from 'wagmi'
 

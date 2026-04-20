@@ -71,14 +71,14 @@ const Bar = styled.div<{ $status: Status }>(
     width: ${theme.space.full};
     height: ${theme.space['9']};
     border-radius: ${theme.radii.full};
-    background-color: ${theme.colors.blueSurface};
+    background-color: ${theme.colors.accentSecondaryBackground};
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 
-    --bar-color: ${theme.colors.blue};
+    --bar-color: ${theme.colors.accentPrimary};
 
     ${$status === 'complete' &&
     css`

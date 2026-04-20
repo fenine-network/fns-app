@@ -14,7 +14,7 @@ const Container = styled.div(
     display: flex;
     align-items: center;
     border: 1px solid ${theme.colors.border};
-    border-radius: ${theme.radii['2xLarge']};
+    border-radius: 0;
     padding: ${theme.space['4']};
     gap: ${theme.space['4']};
   `,

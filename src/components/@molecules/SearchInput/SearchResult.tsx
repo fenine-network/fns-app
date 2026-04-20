@@ -34,12 +34,8 @@ const SearchItemContainer = styled.div<{
     gap: ${theme.space['2']};
     height: ${theme.space['14']};
     padding: 0 ${theme.space['4']};
-    border-bottom: 0.0938rem ${theme.borderStyles.solid} ${theme.colors.border};
-    &:last-of-type {
-      border-bottom: 0;
-    }
     position: relative;
-    opacity: 0.6;
+    opacity: 1;
 
     ${!$clickable &&
     css`
@@ -52,8 +48,12 @@ const SearchItemContainer = styled.div<{
     `}
     ${$selected &&
     css`
-      background-color: ${theme.colors.background};
+      background-color: rgba(24, 20, 18, 0.03);
       opacity: 1;
+
+      html[data-theme='dark'] & {
+        background-color: rgba(255, 255, 255, 0.03);
+      }
     `}
     ${$error &&
     css`

@@ -67,7 +67,7 @@ const OutlinedContainer = styled.div(
     gap: ${theme.space['2']};
 
     padding: ${theme.space['4']};
-    border-radius: ${theme.radii.large};
+    border-radius: 0;
     background: ${theme.colors.backgroundSecondary};
 
     @media (min-width: ${theme.breakpoints.sm}px) {
@@ -134,7 +134,7 @@ const InfoItem = styled.div(
 
     padding: ${theme.space['4']};
     border: 1px solid ${theme.colors.border};
-    border-radius: ${theme.radii.large};
+    border-radius: 0;
     text-align: center;
 
     & > div:first-of-type {
@@ -256,7 +256,7 @@ const PaymentChoice = ({
         borderWidth="1x"
         borderColor="border"
         borderStyle="solid"
-        borderRadius="large"
+        borderRadius="none"
         gap="0"
         value={paymentMethodChoice}
       >

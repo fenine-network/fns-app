@@ -52,7 +52,7 @@ const InfoItem = styled.div(
 
     padding: ${theme.space['4']};
     border: 1px solid ${theme.colors.border};
-    border-radius: ${theme.radii.large};
+    border-radius: 0;
     text-align: center;
 
     & > div:first-of-type {

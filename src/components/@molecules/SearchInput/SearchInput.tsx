@@ -96,6 +96,18 @@ const SearchResultsContainer = styled.div<{
             cursor: default;
           }
         `}
+
+    @media (min-width: ${theme.breakpoints.sm}px) {
+      border-radius: 0;
+      background: rgba(255, 250, 245, 0.98);
+      border: ${theme.borderWidths.px} ${theme.borderStyles.solid} rgba(22, 18, 16, 0.14);
+      box-shadow: none;
+
+      html[data-theme='dark'] & {
+        background: rgba(24, 24, 18, 0.98);
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+    }
   `,
 )
 

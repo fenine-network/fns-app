@@ -17,9 +17,9 @@ export const makeCurrencyDisplay = ({
   bufferPercentage = 100n,
   currency = 'eth',
 }: Props & { ethPrice?: bigint }) => {
-  if (eth === undefined || ethPrice === undefined) return '0.0000 ETH'
+  if (eth === undefined || ethPrice === undefined) return '0.0000 FEN'
   if (currency === 'eth')
-    return makeDisplay({ value: (eth * bufferPercentage) / 100n, symbol: 'eth' })
+    return makeDisplay({ value: (eth * bufferPercentage) / 100n, symbol: 'fen' })
   return makeDisplay({ value: (eth * ethPrice) / BigInt(1e8), symbol: currency })
 }
 
@@ -31,7 +31,7 @@ export const CurrencyText = ({ eth, bufferPercentage = 100n, currency = 'eth' }:
   return (
     <Skeleton loading={isLoading}>
       {(() => {
-        if (isLoading) return '0.0000 ETH'
+        if (isLoading) return '0.0000 FEN'
         return makeCurrencyDisplay({ eth, ethPrice, bufferPercentage, currency })
       })()}
     </Skeleton>

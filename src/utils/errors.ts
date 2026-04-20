@@ -43,7 +43,7 @@ const getEstimateGasExecutionErrorMessage = (err: EstimateGasExecutionError) => 
     return {
       message: `Wallet balance too low. Minimum required balance: ${formatEther(
         BigInt(requiredBalance),
-      )} ETH`,
+      )} FEN`,
       type: 'insufficientFunds',
     } as const
   }
@@ -56,7 +56,7 @@ const getTransactionRejectedRpcErrorMessage = (
 ) => {
   if (err.details.toLowerCase().includes('insufficient funds'))
     return {
-      message: 'Not enough ETH on Ethereum Mainnet',
+      message: 'Not enough FEN on Fenine Mainnet',
       type: 'contract',
     } satisfies ReadableError
 

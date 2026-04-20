@@ -9,7 +9,7 @@ import { resolve } from 'node:path'
 
 import { HardhatUserConfig } from 'hardhat/config'
 
-const ensContractsPath = './node_modules/@ensdomains/ens-contracts'
+const ensContractsPath = './node_modules/@fenine/ens-contracts'
 
 const config: HardhatUserConfig = {
   solidity: {
